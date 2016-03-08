@@ -9,3 +9,8 @@ int main(void)
 
 	return 0;
 }
+
+int read_config_file(const char *filename, config_data data)
+{
+	return 0;
+}
