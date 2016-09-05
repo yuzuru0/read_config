@@ -1,15 +1,28 @@
-#ifndef __READ_CONFIG_H__
-#define __READ_CONFIG_H__
+#ifndef __read_config_h__
+#define __read_config_h__
 
-#define CONF_MAX_STR 256
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-struct s_config_data
+#define UNIT_INCH 0
+#define UNIT_METER 1
+#define UNIT_CM 2
+#define UNIT_MM 3
+#define UNIT_DEG 0
+#define UNIT_RAD 1
+#define NO_PORT_EXIST -1
+
+#define CONF_FILE "fastrek.conf"
+
+typedef struct
 {
-	char config_name[CONF_MAX_STR];
-	char config_value[CONF_MAX_STR];
-	struct s_config_data  *next;
-};
+	int unit_of_length;
+	int unit_of_angle;
+	char ip_address[16];
+	int ip_address_byte[4];
+	int ip_port[4];
+}fastrek_config;
 
-typedef struct s_config_data config_data;
-
+int read_config(fastrek_config *config);
 #endif
